@@ -1,0 +1,16 @@
+<div class="o_page">
+    <img class="linked" routerLink="" src="assets/Vector.png" alt="" />
+    <h1>
+      {{ astro.titulo }}
+    </h1>
+    <div class="o_detail">
+      <img src="assets{{ astro.imagen_url }}" alt="" />
+      <div class="etiquetas">
+        <div class="etiqueta">{{ astro.etiquetas[0] }}</div>
+        <div class="etiqueta">{{ astro.etiquetas[1] }}</div>
+      </div>
+      <p>{{ astro.descripcion }}</p>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+  

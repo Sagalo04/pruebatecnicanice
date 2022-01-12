@@ -1,0 +1,68 @@
+<div class="o_home">
+    <div class="filtros">
+      <div class="buscador">
+        <img src="assets/search.svg" alt="" />
+        <input
+          type="search"
+          placeholder="Buscar"
+          name="filterastro"
+          [(ngModel)]="filterastro"
+        />
+      </div>
+      <select name="filteretiqueta" [(ngModel)]="filteretiqueta">
+        <option class="selectplace" value="" selected disabled>Filtrar</option>
+        <option value="Galaxia">Galaxia</option>
+        <option value="Agujeros Negros">Agujeros Negros</option>
+        <option value="Interasante">Interasante</option>
+        <option value="Planetas">Planetas</option>
+        <option value="Terror">Terror</option>
+      </select>
+    </div>
+    <div class="o_card_container">
+      <div
+        class="o_card"
+        *ngFor="
+          let astro of astros
+            | filter: filterastro
+            | filterEtiquetas: filteretiqueta
+        "
+      >
+        <div class="img">
+          <img src="assets{{ astro.imagen_url }}" alt="" />
+          <div class="o_type">
+            <div class="etiqueta">{{ astro.etiquetas[0] }}</div>
+            <a class="ojo" [routerLink]="['/content/', astro.enlace]">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                aria-hidden="true"
+                role="img"
+                width="24px"
+                height="24px"
+                preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 16 16"
+              >
+                <g fill="#333">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M1 10c0-3.9 3.1-7 7-7s7 3.1 7 7h-1c0-3.3-2.7-6-6-6s-6 2.7-6 6H1zm4 0c0-1.7 1.3-3 3-3s3 1.3 3 3s-1.3 3-3 3s-3-1.3-3-3zm1 0c0 1.1.9 2 2 2s2-.9 2-2s-.9-2-2-2s-2 .9-2 2z"
+                  />
+                </g>
+              </svg>
+            </a>
+          </div>
+        </div>
+  
+        <div class="o_info">
+          <h1>{{ astro.titulo }}</h1>
+          <p>
+            {{ astro.descripcion }}
+          </p>
+        </div>
+        <button [routerLink]="['/content/', astro.enlace]">Leer más</button>
+        <p class="fecha">Limite: {{ astro.fechaL }}</p>
+      </div>
+    </div>
+  </div>
+  
