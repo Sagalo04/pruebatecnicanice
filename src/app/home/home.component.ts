@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AstroService } from '../astro.service';
 import { Astro } from '../astro';
-
+import { FilterPipe } from '../pipes/filter.pipe';
+import { findIndex } from 'rxjs';
+import { NgForOf, NgForOfContext } from '@angular/common';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -12,11 +14,10 @@ export class HomeComponent implements OnInit {
   filterastro = '';
   filteretiqueta = '';
   astros!: any[];
-  visited!: boolean;
+  a!: number
   ngOnInit(): void {
-    this.dataSvc.getAllAstros().subscribe((data) => {
+    this.dataSvc.getAllAstros().subscribe((data: any[]) => {
       this.astros = data;
-      console.log(data);
     });
   }
 }

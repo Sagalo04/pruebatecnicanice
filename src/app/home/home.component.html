@@ -18,15 +18,12 @@
         <option value="Terror">Terror</option>
       </select>
     </div>
-    <div class="o_card_container">
+    <div class="o_card_container" >
       <div
         class="o_card"
-        *ngFor="
-          let astro of astros
-            | filter: filterastro
-            | filterEtiquetas: filteretiqueta
-        "
+        *ngFor="let astro of astros | filter: filterastro | filterEtiquetas: filteretiqueta; "
       >
+  
         <div class="img">
           <img src="assets{{ astro.imagen_url }}" alt="" />
           <div class="o_type">

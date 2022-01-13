@@ -83,3 +83,15 @@
     }
   }
   
+  .disabled{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: -10rem;
+    h1{
+      margin: 0;
+      font-size: 70px;
+    }
+  }

@@ -13,22 +13,24 @@ export class CardComponent implements OnInit {
   type!: string;
   currentRoute!: string;
   astro!: Astro;
+  today = new Date();
+  date!: Date;
+  pass!: boolean
   constructor(
     public router: Router,
     private route: ActivatedRoute,
     private dataSvc: AstroService
   ) {
-    console.log(route);
   }
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       this.type = params['type'];
-      console.log(this.type);
     });
 
     this.dataSvc.getOneAstro(this.type).subscribe((data) => {
       this.astro = data;
-      console.log(data);
+      var aux = data.fechaL; 
+      this.date = new Date(+(aux.split("/")[2]),+aux.split("/")[0]-1,+aux.split("/")[1])
     });
   }
 }

@@ -3,13 +3,21 @@
     <h1>
       {{ astro.titulo }}
     </h1>
-    <div class="o_detail">
+    <div class="o_detail" *ngIf="date > today">
       <img src="assets{{ astro.imagen_url }}" alt="" />
       <div class="etiquetas">
         <div class="etiqueta">{{ astro.etiquetas[0] }}</div>
         <div class="etiqueta">{{ astro.etiquetas[1] }}</div>
       </div>
       <p>{{ astro.descripcion }}</p>
+    </div>
+    <div *ngIf="date < today" class="disabled" #elseBlock>
+      <img src="assets/disabled.svg" alt="">
+      <h1>
+        Este curso <br> 
+ya no se encuentra<br> disponible
+
+      </h1>
     </div>
   </div>
   <router-outlet></router-outlet>
